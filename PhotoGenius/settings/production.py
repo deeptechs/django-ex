@@ -4,6 +4,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+from . import database
+
 DATABASES = {
     'default': database.config()
 }
