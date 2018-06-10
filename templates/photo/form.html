@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    {{ block.super }}-
+    {% if 'upload' in request.path %}
+        Oluştur
+    {% elif 'update' in request.path %}
+        Güncelle
+    {% elif 'delete' in request.path %}
+        Sil
+    {% endif %}
+{% endblock %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-sm-6 col-lg-6">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h1> Form </h1>
+                    {{ form|crispy }}
+                    {# formun kullanacağı js gibi dosyaları çağırmak için #}
+                    {{ form.media }}
+
+                    {% if 'upload' in request.path %}
+                        <input class="btn btn-primary" type="submit" value="Kaydet">
+                    {% elif 'update' in request.path %}
+                        <input class="btn btn-primary" type="submit" value="Güncelle">
+                    {% elif 'delete' in request.path %}
+                        <input class="btn btn-primary" type="submit" value="Sil">
+                    {% endif %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

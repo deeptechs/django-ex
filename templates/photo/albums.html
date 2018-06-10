@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} - {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h2>My Albums</h2>
+
+    {% for album in albums %}
+        <a href="{% url 'photo:index' alb_id=album.id %}">{{ album.name }}</a>
+
+        <br>
+
+    {% endfor %}
+
+{% endblock %}
+

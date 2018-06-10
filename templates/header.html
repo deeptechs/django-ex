@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+
+        <a href="{% url 'home:home' %}" class="navbar-brand">PhotoGenius</a>
+
+        <!-- Telefon ekranları için menü butonu -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+
+        <nav class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Arama Çubuğu  ilk yazılan bootstrap sitesinden alınan-->
+            <form class="form-inline my-2 my-lg-0 mr-auto" role="search" method="GET" action="">
+                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search on Albums"
+                       aria-label="Search" value="{{ request.GET.q }}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                </button>
+            </form>
+
+            <div id="welcome" style="padding-right: 15em; color: #9fcdff;">Hello {{ request.user }} </div>
+
+            <!-- Temel Sayfalar -->
+            <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                    {{ album_ }}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'photo:upload' %}">Add Photo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'photo:photo_index_default' %}">My Photos</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+
+        </nav>
+
+    </div>
+</nav>
