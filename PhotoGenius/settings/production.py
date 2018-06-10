@@ -10,7 +10,7 @@ DATABASES = {
         'NAME': 'photogenius',
         'USER': 'postgres',
         'PASSWORD': 'Abcdefgh.1',
-        'HOST': 'db',
+        'HOST': 'postgres',
         'PORT': '5432',
     }
 }
