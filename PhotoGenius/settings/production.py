@@ -5,14 +5,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'photogenius',
-        'USER': 'postgres',
-        'PASSWORD': 'Abcdefgh.1',
-        'HOST': 'postgres',
-        'PORT': '5432',
-    }
+    'default': database.config()
 }
 
 # Staticfiles_dirs yazdığımız app ler için statik dosyaların tamamanın bir nerede tutulduğunu gösterir, her uygulama için ayrı tutulmaz.
